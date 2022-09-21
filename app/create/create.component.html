@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    
+    <!-- show errormsg -->
+    <div *ngIf="errormsg" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>{{errormsg}}  You should check in on some of those fields below.</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+
+      <div *ngIf="successmsg" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{successmsg}} Account  Created!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      <button routerLink="/login" class="btn btn-danger mx-2">Logout</button>
+    <form [formGroup]="userForm" (ngSubmit)="userSubmit()">
+        <div class="col-lg-4 mt-2">
+            <input type="text" class="form-control" formControlName="name" placeholder="Enter Name">   
+        </div>
+
+        <div class="col-lg-4 mt-2">
+            <input type="text" class="form-control" formControlName="email" placeholder="Enter Email">   
+        </div>
+
+        <div class="col-lg-4 mt-2">
+            <input type="text" class="form-control" formControlName="password" placeholder="Enter Password">   
+        </div>
+
+        <div class="col-lg-4 mt 2" *ngIf="!getparamid" (click)="userSubmit()">
+            <button class="btn btn-primary btn-sm">Create Account</button>
+        </div>
+
+        <div class="col-lg-4 mt 2" *ngIf="getparamid" (click)="userUpdate()">
+            <button class="btn btn-dark btn-sm">Update Account</button>
+        </div>
+    </form>
+</div>
